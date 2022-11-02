@@ -13,7 +13,7 @@ const configDB ={
     port:3306,
     database: "t2207e",
     user:"root",
-    password:""  ,  //dung win thi bo trong
+    password:"t2207e123"  ,  //dung win thi bo trong
     multipleStatements: true //cho phep su dung nhieu cau SQL 1 lan gui yeu cau
 };
 var ls = [
