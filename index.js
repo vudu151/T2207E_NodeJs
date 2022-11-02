@@ -7,15 +7,27 @@ const PORT = process.env.PORT || 5000;  //lấy cổng 5000
 app.listen(PORT,function (){
    console.log("Server is running..."); //Mở cổng
 });
+
+//share api access all
+app.use(function (req, res, next){
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type, Accept");
+})
+
+
 //config to connect mysql
 const configDB ={
-    host: "localhost",
+    host: "139.180.186.20",
     port:3306,
     database: "t2207e",
-    user:"root",
+    user:"t2207e",
     password:"t2207e123"  ,  //dung win thi bo trong
     multipleStatements: true //cho phep su dung nhieu cau SQL 1 lan gui yeu cau
 };
+//connect to sql
+const mysql = require("mysql");
+const conn = mysql.createConnection(configDB);
+
 var ls = [
     {
         id: 1,
@@ -104,29 +116,6 @@ app.get("delete",function (req,res){
 //chạy lại terminal file (node index.js) để mở trong host 5000
 //chạy lại terminal ctrl + C rồi chạy lại (node index.js)
 
-
-
-
-//share api access all
-app.use(function (req, res, next){
-    res.header("Access-Control-Allow-Origin","*");
-    res.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type, Accept");
-})
-
-
-
-//config to connect mysql
-const configDB ={
-    host: "139.180.186.20",
-    port:3306,
-    database: "t2207e",
-    user:"t2207e",
-    password:"t2207e123"  ,  //dung win thi bo trong
-    multipleStatements: true //cho phep su dung nhieu cau SQL 1 lan gui yeu cau
-};
-//connect to sql
-const mysql = require("mysql");
-const conn = mysql.createConnection(configDB);
 
 //api list all class
 app.get("/get-classes",function (req,res){
