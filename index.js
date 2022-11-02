@@ -1,17 +1,19 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 2000;
+const PORT = process.env.PORT || 2000;    //Khai báo cổng localhost
 
 app.listen(PORT,function () {
     console.log("Sever is running...");
 });
-//share api access all
+
+//share api access all                //Đây l khi làm dự án lấy sql chung từ một tài khoản quán lí
 app.use(function (req,res,next){
     res.header("Acccess-Control-Allow-Origin","*");
     res.header("Acccess-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-// config to connect MySQL
+
+// Config to connect MySQL
 const configDB = {
     host: "139.180.186.20",
     port: 3306,
@@ -22,6 +24,7 @@ const configDB = {
 
 };
 
+//Connect to mysql
 const mysql = require("mysql");
 const conn = mysql.createConnection(configDB);
 
