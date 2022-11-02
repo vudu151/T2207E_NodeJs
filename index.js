@@ -112,6 +112,3 @@ app.delete("/student",function (req,res){
     res.send("Student with DELETE");
 })
 
-app.delete("/student",function (req,res){
-    res.send("Student with DELETE");
-})
